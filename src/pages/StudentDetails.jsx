@@ -10,6 +10,10 @@ const StudentDetails = () => {
 
     const { enrollment_no } = useParams();
 
+    const capitalizeFirstLetter = (string) => {
+        return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    };
+
     useEffect(() => {
         const fetchStudent = async () => {
             const baseUrl = process.env.REACT_APP_API; // Accessing .env variable
@@ -44,7 +48,7 @@ const StudentDetails = () => {
                         {student.name[0]}
                     </div>
                     <div className="ml-4">
-                        <h1 className=" text-2xl sm:text-4xl font-extrabold text-gray-800 mb-2">{student.name}</h1>
+                        <h1 className=" text-2xl sm:text-4xl font-extrabold text-gray-800 mb-2">{capitalizeFirstLetter(student.name)}</h1>
                         <p className="text-sm sm:text-lg text-gray-600"><span className="font-semibold">Enrollment Number:</span> {student.enrollment_no}</p>
                         <p className="text-sm sm:text-lg text-gray-600"><span className="font-semibold">Admission Number:</span> {student.admission_no}</p>
                     </div>
